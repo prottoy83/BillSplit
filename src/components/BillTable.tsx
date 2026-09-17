@@ -1,6 +1,13 @@
 import { Box, Typography, Paper, Divider, Stack, ButtonGroup, Button } from "@mui/material";
+import type { SavedItem } from "../Bill"; 
 
-function BillTable({ item, onEdit, onDelete }) {
+interface BillTableProps {
+  item: SavedItem;
+  onEdit?: (item: SavedItem) => void;
+  onDelete?: (id: number) => void;
+}
+
+function BillTable({ item, onEdit, onDelete }: BillTableProps) {
   // Fallback in case item is empty or undefined
   if (!item) return null;
 

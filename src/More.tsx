@@ -71,7 +71,7 @@ function More() {
             <GitHubIcon sx={{ fontSize: 16, color: 'text.primary' }} />
             Found a bug or want a feature?{' '}
             <Link
-              href="https://github.com/yourusername/billsplit/issues/new"
+              href="https://github.com/prottoy83/BillSplit/issues/new"
               target="_blank"
               rel="noopener noreferrer"
               underline="hover"

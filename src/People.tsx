@@ -1,15 +1,24 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Box, TextField, Button, Typography, Paper, Stack } from '@mui/material';
 import PeopleBox from './components/PeopleBox';
 
-function People() {
-  const [people, setPeople] = useState([
-    { id: 1, name: 'Alice' },
-    { id: 2, name: 'Bob' },
-  ]);
+// 1. Define the interfaces
+export interface Person {
+  id: number;
+  name: string;
+}
+
+interface PeopleProps {
+  people: Person[];
+  setPeople: React.Dispatch<React.SetStateAction<Person[]>>;
+}
+
+// 2. Apply the interface to the component props
+function People({ people, setPeople }: PeopleProps) {
   const [name, setName] = useState('');
 
-  const handleAdd = (e) => {
+  // 3. Type the event parameter
+  const handleAdd = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name.trim()) return;
 
@@ -18,12 +27,13 @@ function People() {
       { 
         id: prev.length > 0 ? Math.max(...prev.map((p) => p.id)) + 1 : 1, 
         name: name.trim() 
-        },
+      },
     ]);
     setName('');
   };
 
-  const handleDelete = (id) => {
+  // 4. Type the id parameter
+  const handleDelete = (id: number) => {
     setPeople((prev) => prev.filter((p) => p.id !== id));
   };
 
