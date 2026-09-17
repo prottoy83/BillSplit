@@ -1,6 +1,12 @@
 import { Box, Typography, ButtonGroup, Button, Avatar } from '@mui/material';
 
-function PeopleBox({ name = "User Name", index = 1, onDelete, onEdit }: any) {
+interface PeopleBoxProps {
+  name?: string;
+  onDelete?: () => void;
+  onEdit?: () => void;
+}
+
+function PeopleBox({ name = "User Name", onDelete, onEdit }: PeopleBoxProps) {
   const initial = name ? name.charAt(0).toUpperCase() : '?';
 
   return (

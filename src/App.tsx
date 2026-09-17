@@ -12,13 +12,22 @@ import PeopleIcon from '@mui/icons-material/People';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
-//Pages
+// Pages
 import People from './People';
 import Bill from './Bill';
 import More from './More';
 
+// 1. Define the type for the people state
+export interface Person {
+  id: number;
+  name: string;
+}
+
 function App() {
   const [tabValue, setTabValue] = useState(0);
+
+  // 2. Tell TypeScript this is an array of Person objects
+  const [people, setPeople] = useState<Person[]>([]);
 
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: '#f8fafc' }}>
@@ -53,7 +62,10 @@ function App() {
 
       {/* Main Content Spacer */}
       <Box sx={{ p: 2, pb: 10 }}>
-      {[<People key="people" />, <Bill key="bill" />, <More key="more" />][tabValue]}
+      {[
+        <People key="people" people={people} setPeople={setPeople} />, 
+        <Bill key="bill" people={people} />, 
+        <More key="more" />][tabValue]}
       </Box>
 
       {/* Bottom Navigation */}
@@ -73,7 +85,8 @@ function App() {
         <BottomNavigation
           showLabels
           value={tabValue}
-          onChange={(event, newValue) => {
+          // 3. Replaced 'event' with '_' since we don't use it
+          onChange={(_, newValue) => {
             setTabValue(newValue);
           }}
           sx={{ bgcolor: 'transparent' }}
