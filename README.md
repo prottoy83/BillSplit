@@ -1,4 +1,4 @@
-# BillSplit
+# BillSplit - v0.01
 
 BillSplit is a progressive web application (PWA) built with React and Material-UI designed to calculate and split shared expenses. It allows users to input itemized bills, assign percentage-based shares to specific contributors, and automatically calculate the final amount owed by each person.
 
